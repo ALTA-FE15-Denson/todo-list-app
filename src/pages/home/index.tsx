@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
 import axios from "axios";
@@ -14,9 +14,9 @@ const index = () => {
   //Input data
   const [content, setContent] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [due_string, setDueString] = useState<string>("");
-  const [due_lang, setDueLang] = useState<string>("EN");
-  const [priority, setPriority] = useState<number>(4);
+  const [due_string] = useState<string>("");
+  const [due_lang] = useState<string>("EN");
+  const [priority] = useState<number>(4);
 
   //Update data
   const [popupVisible, setPopupVisible] = useState<boolean>(false);
@@ -44,7 +44,7 @@ const index = () => {
           },
         }
       )
-      .then((res) => {
+      .then(() => {
         setShowCreate(false);
         Swal.fire({
           title: "Success",
@@ -76,7 +76,7 @@ const index = () => {
           },
         }
       )
-      .then((res) => {
+      .then(() => {
         setPopupVisible(false);
         Swal.fire({
           title: "Success",
@@ -108,7 +108,7 @@ const index = () => {
               Authorization: `Bearer ${import.meta.env.VITE_DATA_API}`,
             },
           })
-          .then((res) => {
+          .then(() => {
             getData();
           })
           .catch((err) => {
@@ -129,7 +129,7 @@ const index = () => {
           },
         }
       )
-      .then((res) => {
+      .then(() => {
         Swal.fire({
           title: "Success",
           text: "Task Completed",
@@ -163,6 +163,7 @@ const index = () => {
       })
       .then((res) => {
         setData(res.data);
+        
       })
       .catch((err) => {
         console.log(err);
@@ -223,8 +224,9 @@ const index = () => {
             <p className="py-2 text-center font-semibold text-[22px] lg:text-[30px]">
               All Task
             </p>
-            {data &&
-              data.map((item: any, index) => {
+            {
+            data &&
+              data.map((item: any, index: number) => {
                 return (
                   <Card
                     key={index}
@@ -237,7 +239,8 @@ const index = () => {
                     onComplete={() => handleCompleteTask(item.id)}
                   />
                 );
-              })}
+              })
+              }
           </div>
         </div>
       </section>

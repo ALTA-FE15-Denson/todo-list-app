@@ -1,4 +1,4 @@
-import React from 'react'
+import {FC} from 'react'
 
 interface DetailProps {
     id: string,
@@ -11,7 +11,7 @@ const Detail: FC<DetailProps> = ({
     id, content, date, description
 }) => {
   return (
-    <div className='mx-auto w-80 lg:w-[60vw] shadow-md border-none rounded-md'>
+    <div id={id} className='mx-auto w-80 lg:w-[60vw] shadow-md border-none rounded-md'>
         <div className='flex flex-col p-5'>
             <h1 className='text-xl font-bold text-center'>{content}</h1>
             <p className='text-sm text-gray-400'>{date}</p>
