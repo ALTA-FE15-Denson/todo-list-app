@@ -5,6 +5,8 @@ import axios from "axios";
 import Card from "../../component/Card";
 import Popup from "../../component/Popup";
 import Swal from "sweetalert2";
+import logo from '../../../public/to-do-list.png'
+import show from '../../../public/plus.png'
 
 const index = () => {
   const [data, setData] = useState<any>([]);
@@ -202,7 +204,7 @@ const index = () => {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="#" className="flex items-center">
             <img
-              src="../../../public/to-do-list.png"
+              src={logo}
               className="h-4 lg:h-8 mr-3"
               alt="Flowbite Logo"
             />
@@ -249,7 +251,7 @@ const index = () => {
           onClick={() => handleCreate()}
           className="border-none rounded-full focus:border-none focus:outline-none transition ease-in-out transition ease-in-out bg-transparent hover:bg-red-500 p-5"
         >
-          <img src={`../../../public/plus.png`} alt="" className="w-5 h-5 text-white" />
+          <img src={show} alt="" className="w-5 h-5 text-white" />
           <Popup show={showCreate} onClose={() => setShowCreate(!showCreate)}>
             <Input
               id="create"
